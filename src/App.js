@@ -1,23 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ItemForm from "./components/ItemForm";
+import "./App.css";
 
 function App() {
+
+  const [fields, setFields] = React.useState([
+    {
+      label: "name",
+      key: "name",
+      type: "text",
+      value: "",
+    },
+    {
+      label: "email",
+      key: "email",
+      type: "email",
+      value: ""
+    },
+    {
+      label: "Enter your mobile number",
+      key: "mobileno",
+      type: "number",
+      value: ""
+    },
+    {
+      label: "Hobbies",
+      key: "hobby",
+      type: "checkbox",
+      value: "",
+      options: [{ label: "Cricket", value: "cricket" }, { label: "Football", value: "football" }]
+    },
+    {
+      label: "Gender",
+      key: "gender",
+      type: "radio",
+      value: "",
+      options: [{ label: "Male", value: "male" }, { label: "Female", value: "female" }]
+    }
+  ])
+
+  const save = (values) => {
+    console.log("SAVE => ", values);
+  }
+
+  const get = () => {
+    console.log("GETTT => ");
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2 className="">
+        Dynamic Form
+      </h2>
+      <ItemForm fields={fields} save={save} get={get} />
     </div>
   );
 }
